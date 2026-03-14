@@ -62,7 +62,7 @@ app.get('/', (req, res) => {
 });
 
 // --- Pornire Server ---
-const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
     console.log(`🚀 Serverul rulează pe: http://localhost:${PORT}`);
 });
