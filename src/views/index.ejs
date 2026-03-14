@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Cristina Baiura | Expert Contabil & Consultanță Fiscală</title>
+    <meta name="description" content="Servicii de contabilitate premium oferite de Cristina Baiura. Expertiză CECCAR, optimizare fiscală și salarizare pentru afaceri de succes.">
+    <meta name="keywords" content="contabilitate, expert contabil, taxe, salarizare">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+
+        @media (max-width: 768px) {
+    /* Reducem dimensiunea fontului pentru titluri pe mobil */
+    h1 { font-size: 2.5rem !important; line-height: 1.2; }
+    h2 { font-size: 2rem !important; }
+
+    /* Ajustăm padding-ul secțiunilor ca să nu fie prea mult spațiu gol */
+    .py-24 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+
+    /* Cardurile de servicii: eliminăm rotația sau efectele prea complexe care pot încetini scroll-ul */
+    .rounded-\[2\.5rem\] { border-radius: 1.5rem !important; }
+    
+    /* Imaginea de la "Despre Mine" să fie prima pe mobil */
+    .flex-col-reverse-mobile { flex-direction: column-reverse !important; }
+
+    /* Formularul: butoanele să fie pe tot ecranul */
+    #contactForm button { width: 100%; }
+}
+
+/* Animatie pentru intrarea meniului de mobil */
+#mobileMenu {
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-10px);
+    opacity: 0;
+}
+#mobileMenu.flex {
+    transform: translateY(0);
+    opacity: 1;
+}
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover { animation-play-state: paused; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="flex justify-between items-center py-6 px-6 max-w-7xl mx-auto relative z-[100]">
+    <a href="/" class="flex items-center group no-underline">
+            <div class="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center mr-4 group-hover:bg-blue-600 transition duration-300 shadow-lg relative overflow-hidden">
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-blue-500"></div>
+                <span class="text-white font-serif text-2xl font-black relative z-10">CB</span>
+            </div>
+            <div class="flex flex-col">
+                <span class="text-2xl font-extrabold tracking-tighter text-slate-900 leading-none group-hover:text-blue-600 transition">
+                    CRISTINA <span class="font-light text-slate-500">BAIURA</span>
+                </span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-blue-600 mt-1">Expert Contabil</span>
+            </div>
+        </a>
+    
+    <button id="menuBtn" class="md:hidden text-slate-900 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+
+    <div class="hidden md:flex space-x-8 font-bold text-slate-600">
+        <a href="#servicii" class="hover:text-blue-600 transition">Servicii</a>
+        <a href="#despre" class="hover:text-blue-600 transition">Despre</a>
+        <a href="#contact" class="bg-slate-900 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition">Contact</a>
+    </div>
+
+    <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl flex-col p-6 space-y-4 md:hidden border-t border-slate-100">
+        <a href="#servicii" onclick="toggleMenu()" class="text-xl font-bold text-slate-800 border-b pb-2">Servicii</a>
+        <a href="#despre" onclick="toggleMenu()" class="text-xl font-bold text-slate-800 border-b pb-2">Despre</a>
+        <a href="#contact" onclick="toggleMenu()" class="bg-blue-600 text-white text-center py-4 rounded-xl font-bold">Contactează-mă</a>
+    </div>
+</nav>
+    
+    <div id="serviciiModal" class="fixed inset-0 z-[100] hidden overflow-y-auto">
+    <div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity"></div>
+
+    <div class="relative min-h-screen flex items-center justify-center p-4">
+        <div class="relative bg-white w-full max-w-4xl rounded-[2.5rem] shadow-2xl p-8 md:p-12 overflow-hidden">
+            <button onclick="toggleModal('serviciiModal')" class="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <span class="text-blue-600 font-bold uppercase tracking-widest text-xs">Pachet Complet</span>
+                    <h2 class="text-3xl font-black mt-2 mb-6 text-slate-900">Expertiză 360° pentru afacerea ta</h2>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Nu ne limităm doar la introducerea datelor. Oferim o viziune strategică asupra finanțelor tale, asigurându-ne că fiecare leu este optimizat conform legislației.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600 mr-3">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700">Analiză lunară a cash-flow-ului</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600 mr-3">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700">Reprezentare în fața organelor de control</span>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="mt-1 bg-green-100 p-1 rounded-full text-green-600 mr-3">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                            </div>
+                            <span class="text-sm font-semibold text-slate-700">Audit intern și consultanță fiscală preventivă</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-[2rem] border border-slate-100 flex flex-col justify-center text-center">
+                    <div class="mb-6">
+                        <span class="text-5xl font-black text-slate-900">100%</span>
+                        <p class="text-slate-500 font-bold uppercase text-xs tracking-tighter mt-2">Conformitate Legală</p>
+                    </div>
+                    <p class="text-slate-600 text-sm italic mb-8">"Lăsați birocrația în grija noastră și concentrați-vă pe creșterea business-ului."</p>
+                    <a href="#contact" onclick="toggleModal('serviciiModal')" class="bg-blue-600 text-white py-4 rounded-xl font-bold shadow-lg shadow-blue-200 hover:bg-slate-900 transition">
+                        Solicită Ofertă Personalizată
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="mobileMenu" class="hidden absolute top-24 left-0 w-full bg-white shadow-xl p-6 z-40 flex-col space-y-4 md:hidden">
+        <a href="#servicii" class="text-lg font-bold">Servicii</a>
+        <a href="#autoritate" class="text-lg font-bold">Recenzii</a>
+        <a href="#contact" class="bg-blue-600 text-white text-center py-3 rounded-xl">Contact</a>
+    </div>
+
+    <section class="bg-slate-900 py-6 overflow-hidden border-y border-slate-800 shadow-inner">
+        <div class="flex whitespace-nowrap animate-marquee">
+            <div class="flex items-center space-x-16 px-8">
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> MEMBRU CECCAR
+                </span>
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> EXPERTIZA JUDICIARĂ
+                </span>
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> CAFR
+                </span>
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> REVISAL EXPERT
+                </span>
+            </div>
+            <div class="flex items-center space-x-16 px-8" aria-hidden="true">
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> MEMBRU CECCAR
+                </span>
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> EXPERTIZA JUDICIARĂ
+                </span>
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> CAFR
+                </span>
+                <span class="text-white font-black text-sm tracking-[0.3em] flex items-center italic">
+                    <span class="w-2 h-2 bg-blue-500 rounded-full mr-4 animate-pulse"></span> REVISAL EXPERT
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <section id="despre" class="py-24 bg-slate-50 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-16">
+            
+            <div class="lg:w-1/2 relative">
+                <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-600/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white transform -rotate-2 hover:rotate-0 transition duration-500">
+                    <div class="w-full h-[600px] bg-slate-200 flex items-center justify-center text-slate-400 italic">
+                        [ Fotografie Profesională Cristina Baiura ]
+                    </div>
+                </div>
+
+                <div class="absolute -bottom-10 -right-6 md:right-10 bg-slate-900 text-white p-8 rounded-3xl shadow-2xl z-20 animate-bounce-slow">
+                    <span class="block text-4xl font-black text-blue-500">10+</span>
+                    <span class="text-xs uppercase tracking-widest font-bold">Ani de Expertiză <br> în Contabilitate</span>
+                </div>
+            </div>
+
+            <div class="lg:w-1/2">
+                <span class="text-blue-600 font-black uppercase tracking-[0.3em] text-xs">Cine sunt</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-black mt-4 mb-8 text-slate-900 leading-tight">
+                    Cristina Baiura, <br>
+                    <span class="text-slate-500 font-light italic text-3xl">Partenerul tău în creștere.</span>
+                </h2>
+                
+                <div class="space-y-6 text-slate-600 leading-relaxed text-lg">
+                    <p>
+                        Sunt expert contabil autorizat, pasionată de cifre și de modul în care acestea pot dicta succesul unei afaceri. Misiunea mea este să transform contabilitatea dintr-o obligație legală într-un instrument de control și profitabilitate.
+                    </p>
+                    <p>
+                        Fie că ești la început de drum cu un start-up sau gestionezi o companie cu istoric, abordarea mea este aceeași: <strong>precizie, transparență și consultanță proactivă.</strong>
+                    </p>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-slate-200 flex items-center space-x-8">
+                    <div>
+                        <h4 class="font-black text-slate-900 italic text-xl">Cristina Baiura</h4>
+                        <p class="text-sm text-slate-500 font-bold uppercase tracking-widest">Expert Contabil CECCAR</p>
+                    </div>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="servicii" class="py-24 bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+            <div class="max-w-2xl">
+                <span class="text-blue-600 font-black uppercase tracking-[0.3em] text-xs">Expertiză Completă</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-black mt-4 text-slate-900 leading-tight">
+                    Soluții contabile adaptate <br>afacerii tale
+                </h2>
+            </div>
+            <div class="mt-6 md:mt-0">
+                <p class="text-slate-500 font-medium italic border-l-4 border-blue-600 pl-4">
+                    Peste 10 ani de experiență în <br> management financiar și fiscal.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-slate-900 transition duration-500 shadow-sm hover:shadow-2xl">
+                <div class="w-14 h-14 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white shadow-lg shadow-blue-200 group-hover:bg-white group-hover:text-blue-600 transition duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-black mb-4 group-hover:text-white transition">Evidență <br>Contabilă</h3>
+                <p class="text-slate-600 group-hover:text-slate-400 transition leading-relaxed mb-6">
+                    Înregistrarea cronologică a documentelor, întocmirea balanțelor lunare și a bilanțului contabil cu precizie chirurgicală.
+                </p>
+                <ul class="text-sm space-y-2 text-slate-500 group-hover:text-slate-300 transition opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 duration-500">
+                    <li>• Jurnale de vânzări/cumpărări</li>
+                    <li>• Calcul impozite și taxe</li>
+                    <li>• Depunere declarații SFS</li>
+                </ul>
+            </div>
+
+            <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-slate-900 transition duration-500 shadow-sm hover:shadow-2xl">
+                <div class="w-14 h-14 bg-slate-900 rounded-2xl mb-8 flex items-center justify-center text-white shadow-lg group-hover:bg-blue-600 transition duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 005.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-black mb-4 group-hover:text-white transition">Salarizare <br>& HR</h3>
+                <p class="text-slate-600 group-hover:text-slate-400 transition leading-relaxed mb-6">
+                    Gestionăm complet relația cu angajații tăi: de la state de plată și REVISAL până la contracte de muncă și adeverințe.
+                </p>
+                <ul class="text-sm space-y-2 text-slate-500 group-hover:text-slate-300 transition opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 duration-500">
+                    <li>• Transmitere REVISAL</li>
+                    <li>• State de salarii</li>
+                    <li>• Dosare de personal</li>
+                </ul>
+            </div>
+
+            <div class="group p-10 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:bg-slate-900 transition duration-500 shadow-sm hover:shadow-2xl">
+                <div class="w-14 h-14 bg-blue-600 rounded-2xl mb-8 flex items-center justify-center text-white shadow-lg group-hover:bg-white group-hover:text-blue-600 transition duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-black mb-4 group-hover:text-white transition">Consultanță <br>Strategică</h3>
+                <p class="text-slate-600 group-hover:text-slate-400 transition leading-relaxed mb-6">
+                    Optimizare fiscală inteligentă pentru a reduce costurile și a maximiza profitul, respectând 100% cadrul legal.
+                </p>
+                <ul class="text-sm space-y-2 text-slate-500 group-hover:text-slate-300 transition opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 duration-500">
+                    <li>• Planificare fiscală</li>
+                    <li>• Analiză financiară</li>
+                    <li>• Asistență control SFS</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    .animate-bounce-slow {
+        animation: bounce-slow 4s ease-in-out infinite;
+    }
+</style>
+
+    <section id="autoritate" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-4">Ce spun partenerii noștri</h2>
+                <div class="w-24 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-blue-200 transition">
+                    <div class="text-yellow-400 mb-4 font-bold text-lg">★★★★★</div>
+                    <p class="text-slate-600 italic mb-8 leading-relaxed">"Cristina ne-a ajutat să eficientizăm costurile fiscale cu peste 15% încă din primele 3 luni. O recomand cu toată încrederea."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full mr-4 flex items-center justify-center text-white font-bold">AI</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Andrei Spînu</h4>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">CEO, TechStart SRL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-blue-200 transition">
+                    <div class="text-yellow-400 mb-4 font-bold text-lg">★★★★★</div>
+                    <p class="text-slate-600 italic mb-8 leading-relaxed">"Comunicarea este impecabilă. Nu mai am grija declarațiilor sau a termenelor limită de când am început colaborarea."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-slate-900 rounded-full mr-4 flex items-center justify-center text-white font-bold">EM</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Maia Sandu</h4>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Fondator, Art Atelier</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-8 rounded-3xl border border-slate-100 hover:border-blue-200 transition">
+                    <div class="text-yellow-400 mb-4 font-bold text-lg">★★★★★</div>
+                    <p class="text-slate-600 italic mb-8 leading-relaxed">"Un profesionist desăvârșit care înțelege nevoile complexe ale unui business în creștere. Consultanța a fost salvatoare."</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full mr-4 flex items-center justify-center text-blue-600 font-bold">MD</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Igor Grosu</h4>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Manager, Logistix Group</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="contact" class="py-24 bg-slate-900 text-white rounded-t-[3rem] shadow-2xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">Contact Direct</span>
+                <h2 class="text-4xl md:text-5xl font-black mt-4 mb-4">Începe o colaborare solidă</h2>
+                <p class="text-slate-400 italic max-w-xl mx-auto text-lg">
+                    "Excelența în contabilitate este fundația oricărui business de succes. Hai să discutăm despre strategia ta."
+                </p>
+            </div>
+
+            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-800/50 p-8 md:p-12 rounded-[2rem] border border-slate-700 shadow-xl">
+                <div class="flex flex-col space-y-2">
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">Nume Complet</label>
+                    <input type="text" id="nume" placeholder="Ex: Andrei Ionescu" required 
+                        class="bg-slate-900 border border-slate-700 rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none transition text-white placeholder:text-slate-600">
+                </div>
+                
+                <div class="flex flex-col space-y-2">
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">Adresa de Email</label>
+                    <input type="email" id="email" placeholder="nume@companie.ro" required 
+                        class="bg-slate-900 border border-slate-700 rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none transition text-white placeholder:text-slate-600">
+                </div>
+                
+                <div class="flex flex-col space-y-2 md:col-span-2">
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">Serviciul Solicitat</label>
+                    <select id="serviciu" class="bg-slate-900 border border-slate-700 rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none transition text-white appearance-none">
+                        <option value="contabilitate">Evidență Contabilă Lunară</option>
+                        <option value="consultanta">Consultanță Fiscală Strategică</option>
+                        <option value="hr">Salarizare & HR </option>
+                        <option value="audit">Audit sau Expertiză Judiciară</option>
+                    </select>
+                </div>
+
+                <div class="flex flex-col space-y-2 md:col-span-2">
+                    <label class="text-xs font-bold text-slate-400 uppercase ml-1">Mesaj / Detalii Proiect</label>
+                    <textarea id="mesaj" placeholder="Spune-ne scurt despre afacerea ta..." rows="4" required
+                        class="bg-slate-900 border border-slate-700 rounded-xl p-4 focus:ring-2 focus:ring-blue-500 outline-none transition text-white placeholder:text-slate-600"></textarea>
+                </div>
+                
+                <button type="submit" class="md:col-span-2 bg-blue-600 hover:bg-blue-700 text-white font-black py-5 rounded-xl transition duration-300 shadow-lg shadow-blue-900/20 transform hover:-translate-y-1 text-lg uppercase tracking-wider">
+                    Trimite Solicitarea
+                </button>
+            </form>
+            
+            <div id="responseMessage" class="mt-8 text-center hidden p-4 rounded-xl font-bold"></div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 py-12 text-center border-t border-slate-800">
+        <p class="text-slate-500 text-sm">© 2026 Cristina Baiura - Expert Contabil. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>
+        // SCRIPT MOBIL
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if(menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+        }
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.toggle('hidden');
+                document.body.style.overflow = modal.classList.contains('hidden') ? 'auto' : 'hidden';
+            }
+        }
+
+        // LOGICA FORMULAR CONTACT
+        document.getElementById('contactForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const msgBox = document.getElementById('responseMessage');
+            
+            btn.innerText = 'Se trimite...';
+            btn.disabled = true;
+
+            const data = {
+                nume: document.getElementById('nume').value,
+                email: document.getElementById('email').value,
+                serviciu: document.getElementById('serviciu').value,
+                mesaj: document.getElementById('mesaj').value
+            };
+
+            try {
+                const response = await fetch('/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    msgBox.innerText = 'Mesajul a fost trimis! Cristina te va contacta curând.';
+                    msgBox.className = 'mt-8 text-center text-green-400 bg-green-400/10 p-4 rounded-xl block';
+                    e.target.reset();
+                } else { throw new Error(); }
+            } catch (err) {
+                msgBox.innerText = 'Eroare la trimitere. Încearcă direct pe WhatsApp.';
+                msgBox.className = 'mt-8 text-center text-red-400 bg-red-400/10 p-4 rounded-xl block';
+            } finally {
+                btn.innerText = 'Trimite Solicitarea';
+                btn.disabled = false;
+            }
+        });
+    </script>
+
+    <script>
+        // Script pentru meniul mobile
+        const btn = document.getElementById('menuBtn');
+        const menu = document.getElementById('mobileMenu');
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        });
+
+        // Scriptul tău de Contact Form (rămâne același)
+    </script>
+</body>
+</html>

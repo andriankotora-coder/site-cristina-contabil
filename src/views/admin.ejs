@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enterprise Admin | Cristina Baiura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen p-4 md:p-8">
+    <div class="max-w-7xl mx-auto">
+        
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+            <div>
+                <h1 class="text-3xl font-black text-slate-900 tracking-tight">Control Panel</h1>
+                <p class="text-slate-500">Gestionare solicitări și lead-uri primite</p>
+            </div>
+            <a href="/" class="flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-xl hover:bg-slate-100 transition shadow-sm font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+                </svg>
+                Înapoi la site
+            </a>
+        </div>
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-10">
+    <h2 class="text-xl font-bold text-slate-800 mb-6">Configurare Texte Site</h2>
+    
+    <form action="/admin/update-settings?pass=Cristina2026!" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+        <div>
+            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Element Site</label>
+            <select name="key" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+    <option value="hero_titlu_personalizat">Titlu Principal (Hero)</option>
+    <option value="hero_descriere_personalizata">Descriere Sub Titlu</option>
+    <option value="tarif_pornire">Tarif Pornire (LEI)</option>
+    </select>
+        </div>
+        <div>
+            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Valoare Nouă</label>
+            <input type="text" name="value" placeholder="Introdu textul nou..." required class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        <button type="submit" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+            Actualizează Site
+        </button>
+    </form>
+</div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden">
+                <div class="absolute right-0 top-0 h-full w-2 bg-blue-600"></div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Total Solicitări</p>
+                <p class="text-4xl font-black text-slate-900"><%= leaduri.length %></p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden">
+                <div class="absolute right-0 top-0 h-full w-2 bg-green-500"></div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Lead-uri Noi (Azi)</p>
+                <p class="text-4xl font-black text-slate-900">
+                    <%= leaduri.filter(l => new Date(l.data).toDateString() === new Date().toDateString()).length %>
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 relative overflow-hidden">
+                <div class="absolute right-0 top-0 h-full w-2 bg-indigo-500"></div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Status Sistem</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="flex h-3 w-3 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <p class="text-xl font-bold text-slate-800 tracking-tight">Activ & Securizat</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-sm border border-slate-200 rounded-2xl overflow-hidden">
+            <div class="p-6 border-b border-slate-100">
+                <h2 class="text-xl font-bold text-slate-800">Mesaje primite prin formular</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 text-xs uppercase font-bold tracking-widest">
+                            <th class="p-5">Data Primirii</th>
+                            <th class="p-5">Client</th>
+                            <th class="p-5">Contact</th>
+                            <th class="p-5">Serviciu Dorit</th>
+                            <th class="p-5">Conținut Mesaj</th>
+                            <th class="p-5 text-center">Gestionare</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <% if (leaduri && leaduri.length > 0) { %>
+                            <% leaduri.forEach(lead => { %>
+                                <tr class="hover:bg-slate-50 transition group">
+                                    <td class="p-5">
+                                        <div class="flex flex-col">
+                                            <span class="text-slate-900 font-medium">
+                                                <%= lead.data ? new Date(lead.data).toLocaleDateString('ro-RO') : 'N/A' %>
+                                            </span>
+                                            <span class="text-xs text-slate-400">
+                                                <%= lead.data ? new Date(lead.data).toLocaleTimeString('ro-RO', {hour: '2-digit', minute:'2-digit'}) : '' %>
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td class="p-5">
+                                        <span class="text-slate-900 font-bold"><%= lead.nume %></span>
+                                    </td>
+                                    <td class="p-5 text-blue-600 font-medium underline underline-offset-4 decoration-blue-200">
+                                        <a href="mailto:<%= lead.email %>"><%= lead.email %></a>
+                                    </td>
+                                    <td class="p-5">
+                                        <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold rounded-full border border-blue-100">
+                                            <%= lead.serviciu %>
+                                        </span>
+                                    </td>
+                                    <td class="p-5">
+                                        <p class="text-sm text-slate-600 max-w-xs truncate" title="<%= lead.mesaj %>">
+                                            <%= lead.mesaj %>
+                                        </p>
+                                    </td>
+                                    <td class="p-5 text-center">
+                                        <form action="/admin/delete/<%= lead._id %>?pass=Cristina2026!" method="POST" onsubmit="return confirm('Ești sigur că vrei să ștergi acest mesaj? Datele nu vor mai putea fi recuperate.');">
+                                            <button type="submit" class="opacity-0 group-hover:opacity-100 transition-opacity bg-white text-red-500 hover:bg-red-50 hover:text-red-700 font-bold px-4 py-2 border border-red-100 rounded-xl text-sm">
+                                                Șterge
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="6" class="p-20 text-center">
+                                    <div class="flex flex-col items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-slate-200 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 00-2 2H6a2 2 0 00-2 2v-5m16 0h-2.586a1 1 0 01-.707-.293l-2.414-2.414a1 1 0 00-.707-.293h-3.172a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293H4" />
+                                        </svg>
+                                        <p class="text-slate-400 italic">Căsuța de mesaje este goală momentan.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer class="mt-12 text-center text-slate-400 text-xs">
+            <p>&copy; 2026 Cristina Baiura | Enterprise Administration Suite</p>
+        </footer>
+    </div>
+</body>
+</html>
