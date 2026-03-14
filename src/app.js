@@ -59,10 +59,3 @@ app.get('/', (req, res) => {
         console.error('❌ Eroare la trimiterea emailului:', error);
         res.status(500).json({ success: false, error: 'Nu s-a putut trimite mesajul.' });
     }
-});
-
-// --- Pornire Server ---
-
-app.listen(PORT, () => {
-    console.log(`🚀 Serverul rulează pe: http://localhost:${PORT}`);
-});
