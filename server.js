@@ -14,6 +14,7 @@ const Lead = require('./src/models/Lead');
 const app = express();
 
 // --- CONECTARE BAZĂ DE DATE ---
+mongoose.set('strictQuery', false)
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('✅ Conectat la MongoDB Enterprise'))
     .catch(err => console.error('❌ Eroare conexiune DB:', err));
@@ -101,8 +102,6 @@ app.post('/contact', async (req, res) => {
         return res.status(500).json({ success: false, error: error.message });
     }
 });
-
-const PORT = process.env.PORT || 3000;
 // 3. Ruta pentru Panoul de Administrare (Dashboard)
 app.get('/admin-dashboard-cristina', adminAuth, async (req, res) => {
     try {
